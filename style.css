@@ -58,13 +58,18 @@ body {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  margin: 30px auto 0 auto;
+  margin: 20px auto 0 auto;
 }
 
 .instruments__instr {
   width: 15%;
+  cursor: pointer;
+  transition: .3s;
 }
 
+.instruments__instr:hover {
+  transform: scale(1.1);
+}
 
 .maracas-img,
 .piano-img,
@@ -77,7 +82,7 @@ body {
 }
 
 .instruments__instruction {
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -85,13 +90,16 @@ body {
   margin-top: 10px;
 }
 
+.player {
+  position: relative;
+}
 
-.player__rec-circle {
-  width: 7px;
-  height: 7px;
+.player__rec span {
+  width: 6px;
+  height: 6px;
   display: inline-block;
   border-radius: 50%;
-  margin: 1px;
+  margin: 2px;
   background-color: red;
 
 }
@@ -118,6 +126,7 @@ body {
   background-color: #fee3bf;
   color: #2b102d;
   margin: 0 5px;
+  cursor: pointer;
 }
 
 .player__rec,
@@ -162,10 +171,10 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  width: 50%;
   background-color: #f49937;
   transform: translateX(-100%);
-  animation: recording 5s infinite linear;
+  animation: recording 3s infinite linear;
 }
 
 
@@ -186,33 +195,25 @@ body {
 
 
 .player__play {
-  position: relative;
-  margin: 0 auto 10px auto;
-  width: 80px;
-  height: 80px;
-  background-color: #fee3bf;
-  border: 2px solid #61225f;
-  border-radius: 50%;
-  transition: .3s;
-}
-
-.player__play::after {
-  content: '';
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-25%, -50%);
-  border-top: 20px solid transparent;
-  border-left: 30px solid #61225f;
-  border-bottom: 20px solid transparent;
+  right: 15%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: .3s;
+  display: inline-block;
+  border-top: 30px solid transparent;
+  border-left: 40px solid #61225f;
+  border-bottom: 30px solid transparent;
 }
 
 .player__play:hover {
-  background-color: #61225f;
+  border-left: 40px solid #fee3bf;
 }
 
-.player__play:hover.player__play::after {
-  border-left: 30px solid #fee3bf;
+.player__play--locked {
+  pointer-events: none;
+  border-left: 40px solid #505050;
 }
 
 
