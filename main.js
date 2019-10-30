@@ -26,14 +26,15 @@ const tracks = {
   fourthTrack: [],
   fifthTrack: [],
   sixthTrack: [],
-  // funkcja która zaczyna nagrywanie kanału
+
+  // metoda która zaczyna nagrywanie kanału
   startRecord: function (actualTrack) {
     this.isRecordingActive = true;
     this.recordStartTime = Date.now();
     this.trackInRecording = actualTrack;
   },
 
-  //funkcja która nagrywa dźwięki, dodaje nowy element do tablicy kanału
+  //metoda która nagrywa dźwięki, dodaje nowy element do tablicy kanału
   record: function (keySound) {
     const timeFromStart = Date.now() - this.recordStartTime;
     this[this.trackInRecording].push({
@@ -42,18 +43,18 @@ const tracks = {
     })
   },
 
-  //funkcja która kończy nagrywanie kanału
+  //metoda która kończy nagrywanie kanału
   stopRecord: function () {
     this.isRecordingActive = false;
     this.recordStartTime = null;
   },
 
-  //funkcja która usuwa nagrany kanał
+  //metoda która usuwa nagrany kanał
   delRecord: function (trackToDel) {
     this[trackToDel] = [];
   },
 
-  // funkcja która odtwarza nagrywanie przekazanego w parametrze kanału
+  // metoda która odtwarza nagrywanie przekazanego w parametrze kanału
   playTrack: function (trackToPlay) {
     for (let i = 0; i < this[trackToPlay].length; i++) {
       const soundToPlay = this[trackToPlay][i],
@@ -87,7 +88,7 @@ const playSounds = function (e) {
     keySound = e.target.dataset.key;
     recAudio(keySound);
   } else if (e.type === 'keypress') {
-    for (key in instrumensSounds) {
+    for (const key in instrumensSounds) {
       if (e.code === instrumensSounds[key][0]) {
         keySound = key;
         audio = instrumensSounds[key][1];
